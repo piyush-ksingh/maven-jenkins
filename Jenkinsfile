@@ -3,9 +3,7 @@ pipeline {
     stages{
         stage('Maven-Install'){
             steps{
-                step{
-                    mvnHome = tools 'MavenDefault'
-                }
+                 mvnHome = tool 'MavenDefault'              
             }
         }
         stage('Build') {
