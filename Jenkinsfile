@@ -1,13 +1,21 @@
 pipeline {
-
-    stage('Build') {
-            bat "mvn clean test" 
-    }
-    stage('Package') {
-            bat "mvn package"
-    }
-    stage('Results') {
-        junit '**/target/surefire-reports/TEST-*.xml'
-        archiveArtifacts 'target/*.jar'
+    agent any
+    stages{
+        stage('Build') {
+            steps{
+                bat "mvn clean test" 
+            }
+        }
+        stage('Package') {
+            steps{
+                bat "mvn package"
+            }
+        }
+        stage('Results') {
+            steps{
+                junit '**/target/surefire-reports/TEST-*.xml'
+                archiveArtifacts 'target/*.jar'
+            }
+        }
     }
 }
