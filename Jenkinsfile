@@ -3,12 +3,12 @@ pipeline {
     stages{
         stage('Build') {
             steps{
-                bat("D:\maven\apache-maven-3.6.3bin\mvn" clean test)
+                bat(/"D:\maven\apache-maven-3.6.3bin\mvn" clean test/)
             }
         }
         stage('Package') {
             steps{
-                bat("D:\maven\apache-maven-3.6.3bin\mvn" package/)
+                bat(/"D:\maven\apache-maven-3.6.3bin\mvn" package/)
             }
         }
         stage('Results') {
