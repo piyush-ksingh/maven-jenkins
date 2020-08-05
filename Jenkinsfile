@@ -1,23 +1,14 @@
 pipeline {
     agent any
     stages{
-        stage('Maven-Install'){
-            steps{
-                 mvnHome = tool 'MavenDefault'              
-            }
-        }
         stage('Build') {
             steps{
-                withEnv(["MVN_HOME=$mvnHome"]) {
-                   bat(/"%MVN_HOME%\bin\mvn" clean test/)
-                } 
+                bat("D:\maven\apache-maven-3.6.3bin\mvn" clean test)
             }
         }
         stage('Package') {
             steps{
-                withEnv(["MVN_HOME=$mvnHome"]) {
-                    bat(/"%MVN_HOME%\bin\mvn" package/)
-                }
+                bat("D:\maven\apache-maven-3.6.3bin\mvn" package/)
             }
         }
         stage('Results') {
