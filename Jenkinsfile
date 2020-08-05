@@ -1,17 +1,19 @@
 pipeline {
-	agent any
-    stage('Preparation') {
+//    agent any
+/*    stage('Preparation') {
 	
         mvnHome = tool 'MavenDefault'
     }
-    stage('Build') {
-        withEnv(["MVN_HOME=$mvnHome"]) {
-            bat(/"%MVN_HOME%\bin\mvn" clean test/)
+ */   stage('Build') {
+ //       withEnv(["MVN_HOME=$mvnHome"]) {
+ //          bat(/"%MVN_HOME%\bin\mvn" clean test/)
+	 bat "mvn clean test"
         }
     }
     stage('Package') {
-        withEnv(["MVN_HOME=$mvnHome"]) {
-            bat(/"%MVN_HOME%\bin\mvn" package/)
+//        withEnv(["MVN_HOME=$mvnHome"]) {
+//            bat(/"%MVN_HOME%\bin\mvn" package/)
+	 bat "mvn package"
         }
     }
     stage('Results') {
