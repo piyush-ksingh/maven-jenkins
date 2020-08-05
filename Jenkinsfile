@@ -1,4 +1,4 @@
-Pipeline {
+pipeline {
 	agent any
     stage('Preparation') {
 	
@@ -18,4 +18,4 @@ Pipeline {
         junit '**/target/surefire-reports/TEST-*.xml'
         archiveArtifacts 'target/*.jar'
     }
-}d
+}
