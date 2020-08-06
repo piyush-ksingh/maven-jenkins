@@ -3,12 +3,18 @@ pipeline {
     stages{
         stage('Build') {
             steps{
-                bat(/"D:\maven\apache-maven-3.6.3bin\mvn" clean test/)
+                mvnHome = tool 'MAVEN_DEFAULT'
+                withEnv(["MVN_HOME=$mvnHome"]) {
+                    bat(/"%MVN_HOME%\bin\mvn" clean test/)
+                }
             }
         }
         stage('Package') {
             steps{
-                bat(/"D:\maven\apache-maven-3.6.3bin\mvn" package/)
+                mvnHome = tool 'MAVEN_DEFAULT'
+                withEnv(["MVN_HOME=$mvnHome"]) {
+                    bat(/"%MVN_HOME%\bin\mvn" package/)
+                }
             }
         }
         stage('Results') {
