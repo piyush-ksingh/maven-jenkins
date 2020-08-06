@@ -3,7 +3,7 @@ pipeline {
     stages{
         stage('Build') {
             steps{
-                mvnHome = tool 'MAVEN_DEFAULT'
+                def  mvnHome = tool 'MAVEN_DEFAULT'
                 withEnv(["MVN_HOME=$mvnHome"]) {
                     bat(/"%MVN_HOME%\bin\mvn" clean test/)
                 }
@@ -11,7 +11,7 @@ pipeline {
         }
         stage('Package') {
             steps{
-                mvnHome = tool 'MAVEN_DEFAULT'
+                def mvnHome = tool 'MAVEN_DEFAULT'
                 withEnv(["MVN_HOME=$mvnHome"]) {
                     bat(/"%MVN_HOME%\bin\mvn" package/)
                 }
